@@ -3,6 +3,7 @@ import './App.css'
 import HomeUser from './pages/HomeUser'
 import Footer from './components/Footer'
 import HeaderUser from './components/HeaderUser'
+import Auth from './components/Auth'
 
 function App() {
 
@@ -11,6 +12,9 @@ function App() {
       <HeaderUser />
       <Routes>
         <Route path='/' element={<HomeUser />} />
+        <Route path='/register' element={<Auth register />} />
+        <Route path='/login' element={<Auth />} />
+
       </Routes>
       <Footer />
     </>
