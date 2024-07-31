@@ -2,3 +2,25 @@
     margin: 0px;
     padding: 0px;
 }
+:root{
+    --myColorDark:rgb(246,116,152);
+    --myColorLight:rgb(255,183,195);
+}
+
+/* vendor home page */
+
+.intro-card{
+    /* height: 300px;
+    width: 600px; */
+    background-color: rgba(255, 255, 255, 0.656);
+    /* margin-top: 200px;
+    margin-right: 70px; */
+}
+
+
+
+
+
+
+
+/* header vendor */

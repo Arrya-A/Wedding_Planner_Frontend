@@ -4,6 +4,7 @@ import HomeUser from './pages/HomeUser'
 import Footer from './components/Footer'
 import HeaderUser from './components/HeaderUser'
 import Auth from './components/Auth'
+import HomeVendor from './pages/HomeVendor'
 
 function App() {
 
@@ -14,6 +15,8 @@ function App() {
         <Route path='/' element={<HomeUser />} />
         <Route path='/register' element={<Auth register />} />
         <Route path='/login' element={<Auth />} />
+        <Route path='/vendorhome' element={<HomeVendor />} />
+
 
       </Routes>
       <Footer />
