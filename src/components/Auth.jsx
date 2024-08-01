@@ -2,7 +2,7 @@ import { TextField } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Auth({register}) {
+function Auth({register}) { 
     return (
         <>
             <div style={{ backgroundColor: 'black', height: '100vh' }} className='d-flex align-items-center justify-content-center'>
@@ -10,7 +10,7 @@ function Auth({register}) {
                     {register?<h2 className='text-center text-success'>Registration Form</h2>
                     :
                     <h2 className='text-center text-success'>Sign In</h2>}
-                   
+                    
                     <form>
                         {register&&<div className="mb-3 ">
                             <TextField id="standard-basic" label="Name" variant="standard" className='w-100' />

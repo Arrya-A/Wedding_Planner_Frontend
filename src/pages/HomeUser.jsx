@@ -1,8 +1,17 @@
 import React from 'react'
+import SearchForm from '../components/SearchForm'
+
 
 function HomeUser() {
   return (
-    <div>HomeUser</div>
+    <div>
+      
+
+      <SearchForm />
+      
+
+
+    </div>
   )
 }
 
