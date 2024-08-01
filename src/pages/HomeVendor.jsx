@@ -6,7 +6,11 @@ import { Collapse } from 'react-bootstrap'
 
 
 function HomeVendor() {
-  const [open, setOpen] = useState(false)
+  const [openSection, setOpenSection] = useState(null);
+  const handleToggle = (section) => {
+   
+    setOpenSection(openSection === section ? null : section);
+  };
 
 
   return (
@@ -56,13 +60,13 @@ function HomeVendor() {
           <div className="col-md-1"></div>
           <div className="col-md-5 mt-2">
             <div className=' d-flex' style={{ backgroundColor: 'rgb(244,213,194)', height: '150px' }}>
-              <button onClick={() => setOpen(!open)} className='btn btn-outline-primary'>Venue{open ? <FontAwesomeIcon icon={faAngleUp} /> : <FontAwesomeIcon icon={faAngleDown} />}</button>
+              <button onClick={() => handleToggle('section1')} className='btn btn-outline-primary'>Venue {openSection === 'section1' ? <FontAwesomeIcon icon={faAngleUp} /> : <FontAwesomeIcon icon={faAngleDown} />}</button>
               <img className='ms-auto' style={{ overflow: 'hidden', borderTopLeftRadius: '10px', borderBottomLeftRadius: '80px' }} src="https://png.pngtree.com/thumb_back/fh260/background/20230902/pngtree-the-center-of-the-wedding-venue-is-decorated-with-flower-arrangements-image_13158307.jpg" alt="no image" height={'150px'} width={'200px'} />
             </div>
           </div>
           <div className="col-md-5 mt-2">
             <div className='d-flex' style={{ backgroundColor: 'rgb(216,223,252)', height: '150px' }}>
-              <button onClick={() => setOpen(!open)} className='btn btn-outline-primary'>Caterer{open ? <FontAwesomeIcon icon={faAngleUp} /> : <FontAwesomeIcon icon={faAngleDown} />}</button>
+              <button onClick={() => handleToggle('section2')} className='btn btn-outline-primary'>Caterer {openSection === 'section2' ? <FontAwesomeIcon icon={faAngleUp} /> : <FontAwesomeIcon icon={faAngleDown} />}</button>
               <img className='ms-auto' style={{ overflow: 'hidden', borderTopLeftRadius: '80px', borderBottomLeftRadius: '10px' }} src="https://cdn0.weddingwire.com/vendor/342031/3_2/640/jpg/dsc09483_51_2130243-167639591990234.jpeg" alt="no image" height={'150px'} width={'200px'} />
             </div>
           </div>
@@ -79,7 +83,7 @@ function HomeVendor() {
 
 
 
-      <Collapse in={open}>
+      <Collapse in={openSection === 'section1'}>
         <div>
           <section id='vendor_form' className='d-flex justify-content-center align-items-center' style={{
             height: '100vh', backgroundColor: 'rgb(244,213,194)'
@@ -156,7 +160,7 @@ function HomeVendor() {
 
       {/*form - catering  */}
 
-      <Collapse in={open}>
+      <Collapse in={openSection === 'section2'}>
        <div>
           <section id='vendor_form' className='d-flex justify-content-center align-items-center' style={{
             height: '100vh', backgroundColor: 'rgb(216,223,252)'
