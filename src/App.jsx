@@ -6,6 +6,10 @@ import HeaderUser from './components/HeaderUser'
 import Auth from './components/Auth'
 import HomeVendor from './pages/HomeVendor'
 
+
+import ViewCatering from './components/ViewCatering'
+import ViewVenue from './components/ViewVenue'
+
 function App() {
 
   return (
@@ -16,6 +20,11 @@ function App() {
         <Route path='/register' element={<Auth register />} />
         <Route path='/login' element={<Auth />} />
         <Route path='/vendorhome' element={<HomeVendor />} />
+        
+        <Route path='/viewcatering' element={<ViewCatering />} />
+        <Route path='/viewvenue' element={<ViewVenue />} />
+
+
 
 
       </Routes>
