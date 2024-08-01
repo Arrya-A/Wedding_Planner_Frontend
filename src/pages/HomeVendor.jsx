@@ -8,13 +8,14 @@ import { Collapse } from 'react-bootstrap'
 function HomeVendor() {
   const [openSection, setOpenSection] = useState(null);
   const handleToggle = (section) => {
-   
+
     setOpenSection(openSection === section ? null : section);
   };
 
 
   return (
     <>
+    
       <section id='introduction'>
 
         <div className="row" style={{
@@ -101,7 +102,16 @@ function HomeVendor() {
                   />
                 </label>
               </div>
-  
+
+
+              <div className="mb-3 w-100">
+                <select className='form-control rounded' name="category" id="category">
+                <option value="" disabled selected >Choose Your Category</option>
+                  <option value="venue">Venue</option>
+                  <option value="caterer">Caterer</option>
+              
+                </select>
+              </div>
               <div className="mb-3 w-100">
                 <input
                   type="text"
@@ -144,8 +154,8 @@ function HomeVendor() {
                   className='form-control rounded'
                 />
               </div>
-  
-  
+
+
               <div className="mb-3 w-100">
                 <button className='btn btn-dark w-100 rounded'>Update</button>
               </div>
@@ -161,7 +171,7 @@ function HomeVendor() {
       {/*form - catering  */}
 
       <Collapse in={openSection === 'section2'}>
-       <div>
+        <div>
           <section id='vendor_form' className='d-flex justify-content-center align-items-center' style={{
             height: '100vh', backgroundColor: 'rgb(216,223,252)'
           }}>
@@ -178,7 +188,16 @@ function HomeVendor() {
                   />
                 </label>
               </div>
-  
+
+
+              <div className="mb-3 w-100">
+                <select className='form-control rounded' name="category" id="category">
+                <option value="" disabled selected >Choose Your Category</option>
+                  <option value="venue">Venue</option>
+                  <option value="caterer">Caterer</option>
+              
+                </select>
+              </div>
               <div className="mb-3 w-100">
                 <input
                   type="text"
@@ -221,14 +240,14 @@ function HomeVendor() {
                   className='form-control rounded'
                 />
               </div>
-  
-  
+
+
               <div className="mb-3 w-100">
                 <button className='btn btn-dark w-100 rounded'>Update</button>
               </div>
             </div>
           </section>
-       </div>
+        </div>
       </Collapse>
 
 
