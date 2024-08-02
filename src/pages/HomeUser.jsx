@@ -1,17 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import Carousel from 'react-bootstrap/Carousel';
-
-import Card from 'react-bootstrap/Card';
-import { CarouselItem } from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import '../css/homeuser.css'
+import { Link } from 'react-router-dom';
 
 
 function HomeUser() {
   return (
     <>
-      
+     
 
 
       <section className="search-section">
@@ -32,8 +28,8 @@ function HomeUser() {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Venues</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Catering</Dropdown.Item>
+              <Dropdown.Item href="#/action-1"><Link to={'viewvenue'}>Venues</Link></Dropdown.Item>
+              <Dropdown.Item href="#/action-2"><Link to={'viewcatering'}>Catering</Link></Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <div className="input-container justify-content-around">
@@ -47,95 +43,77 @@ function HomeUser() {
 
 
    {/* Testimonials */}
-    <Carousel data-bs-theme="dark">
-      <Carousel.Item>
-       
-       
+   <section class="news py-5">
+	
+  <div class="container py-xl-5 py-lg-3">
+    <h3 class="heading-agileinfo text-dark text-center">Testimonials</h3>
+    <div class="row mt-md-5 pt-4"id="testimonial">
 
-        <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="./src/images/te1.jpg" />
-      <Card.Body>
-        
-        <Card.Title><h5>Mary Jane</h5></Card.Title>
-        <Card.Text>
-        <h4 class="mb-2">Tempor incididunt ut labore hytnm
-						</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo.</p>
-        </Card.Text>
-        
-      </Card.Body>
-    </Card>
-      </Carousel.Item>
+    
+   
+      <div  class="col-md-4 item " >
+        <div class="feedback-info py-5 px-4">
+          <h4 class="mb-2">Tempor incididunt ut labore hytnm
+          </h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo.</p>
+          <div class="feedback-grids mt-4">
+            <div class="feedback-img">
+              <img src="./src/images/te1.jpg" class="img-fluid rounded-circle" alt="" />
+            </div>
+            <div class="feedback-img-info">
+              <h5>Mary Jane</h5>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
       
-      
-
-
-
-      <Carousel.Item>
-      
-
-        <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="./src/images/te2.jpg" />
-      <Card.Body>
-      <Card.Title><h5>Olivia Ruth</h5></Card.Title>
-        <Card.Text>
-        <h4 class="mb-2">Tempor incididunt ut labore hytnm
-						</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo.</p>
-        </Card.Text>
-        
-      </Card.Body>
-    </Card>
-      </Carousel.Item>
-
-
-
-
-
-      <Carousel.Item>
-       
-     
-
-        <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="./src/images/te3.jpg" />
-      <Card.Body>
-        <Card.Title>	<h5>Blake Joe</h5></Card.Title>
-        <Card.Text>
-        <h4 class="mb-2">Tempor incididunt ut labore hytnm
-						</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo.</p>
-        </Card.Text>
-        
-      </Card.Body>
-    </Card>
-      </Carousel.Item>
-    </Carousel>
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
      
-			
+      <div class="col-md-4 item-2 " >
+        <div class="feedback-info py-5 px-4">
+          <h4 class="mb-2">Tempor incididunt ut labore hytnm
+          </h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo.</p>
+          <div class="feedback-grids mt-4">
+            <div class="feedback-img">
+              <img src="./src/images/te3.jpg" class="img-fluid rounded-circle" alt="" />
+            </div>
+            <div class="feedback-img-info">
+              <h5>Olivia Ruth</h5>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
+      
+     
+     
+     
+      <div class="col-md-4 item " >
+        <div class="feedback-info py-5 px-4">
+          <h4 class="mb-2">Tempor incididunt ut labore hytnm
+          </h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo.</p>
+          <div class="feedback-grids mt-4">
+            <div class="feedback-img">
+              <img src="./src/images/te2.jpg" class="img-fluid rounded-circle" alt="" />
+            </div>
+            <div class="feedback-img-info">
+              <h5>Blake Joe</h5>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
+      
+    
+      
+    </div>
+  </div>
+  
+</section>
 
-			
 
 
     </>
