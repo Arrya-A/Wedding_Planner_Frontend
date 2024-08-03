@@ -33,12 +33,12 @@ function Auth({register}) {
 
 
                         {register?<div className='d-flex align-items-center justify-content-center flex-column'>
-                            <button className='btn btn-success my-4'>Create Account</button>
+                            <Link to={'/login'}><button className='btn btn-success my-4'>Create Account</button></Link>
                             <p>Already have an account? <Link to={'/login'} className='text-info'>Sign In</Link></p>
                         </div>
                         :
                         <div className='d-flex align-items-center justify-content-center flex-column'>
-                            <button className='btn btn-success my-4'>Login</button>
+                            <Link to={'/vendorhome'}><button className='btn btn-success my-4'>Login</button></Link>
                             <p>New User? Click here to<Link to={'/register'} className='text-info'>Register</Link></p>
                         </div>}
                     </form>

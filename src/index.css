@@ -7,6 +7,12 @@
     --myColorLight:rgb(255,183,195);
 }
 
+
+
+/* header */
+#brandname{
+    font-family: "Kaushan Script", cursive;
+}
 /* vendor home page */
 
 .intro-card{

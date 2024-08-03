@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import HeaderUser from './components/HeaderUser'
 import Auth from './components/Auth'
 import HomeVendor from './pages/HomeVendor'
+import VendorDetails from './pages/VendorDetails'
 
 
 import ViewCatering from './components/ViewCatering'
@@ -20,10 +21,6 @@ function App() {
         <Route path='/register' element={<Auth register />} />
         <Route path='/login' element={<Auth />} />
         <Route path='/vendorhome' element={<HomeVendor />} />
-        
-        <Route path='/viewcatering' element={<ViewCatering />} />
-        <Route path='/viewvenue' element={<ViewVenue />} />
-
 
 
 
