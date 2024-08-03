@@ -7,6 +7,10 @@ import Auth from './components/Auth'
 import HomeVendor from './pages/HomeVendor'
 import VendorDetails from './pages/VendorDetails'
 
+
+import ViewCatering from './components/ViewCatering'
+import ViewVenue from './components/ViewVenue'
+
 function App() {
 
   return (
@@ -17,7 +21,7 @@ function App() {
         <Route path='/register' element={<Auth register />} />
         <Route path='/login' element={<Auth />} />
         <Route path='/vendorhome' element={<HomeVendor />} />
-        <Route path='/vendordetails' element={<VendorDetails />} />
+
 
 
       </Routes>
