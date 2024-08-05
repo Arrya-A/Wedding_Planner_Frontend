@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import logo from '../assets/logo.jpg'
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import HomeUser from '../pages/HomeUser';
 
 function HeaderUser() {
   return (
@@ -13,10 +14,10 @@ function HeaderUser() {
           <h3 id='brandname'>Wedding Bells</h3>
         </div>
         <Nav.Item className='ms-auto'>
-          <Nav.Link className='mt-2' href="/home">Home</Nav.Link>
+          <Nav.Link className='mt-2'><Link to={'/'}>Home</Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link className='mt-2' eventKey="link-1">Testimonial</Nav.Link>
+          <Nav.Link className='mt-2'  eventKey="link-1"><Link to={''}>Testimonial</Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link className='mt-2' eventKey="link-2">Contact Us</Nav.Link>
