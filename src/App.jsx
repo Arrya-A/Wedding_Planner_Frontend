@@ -23,6 +23,12 @@ function App() {
         <Route path='/vendorhome' element={<HomeVendor />} />
 
 
+       
+        
+        <Route path='/viewcatering' element={<ViewCatering />} />
+        <Route path='/viewvenue' element={<ViewVenue />} />
+
+
 
       </Routes>
       <Footer />
