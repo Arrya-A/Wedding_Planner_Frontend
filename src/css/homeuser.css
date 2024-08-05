@@ -1,73 +1,85 @@
-.search-section {
-    background-image: url('https://www.venuelook.com/images/new-home-images/optimized/city/home-background.jpg'); 
-    background-size: cover;
-    background-position: center;
-    padding: 5rem 0;
-    color: white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60vh; 
-  }
-  
-  .search-container {
-    padding: 2rem;
-    max-width: 800px;
-    width: 100%;
- 
-  }
 
-  .section{
-    background-color: rgba(0, 0, 0, 0.6); 
+.search-container {
   padding: 2rem;
-  border-radius: 10px;
-  }
+  max-width: 800px;
+  width: 100%;
   
-  .search-container h2 {
-    margin-bottom: 1rem;
-    color: white;
-    font-family: 'Arial', sans-serif; 
-  }
+
+}
+.rowbg{
   
-  .search-container p {
-    margin-bottom: 2rem;
-  }
+
+ justify-content: center;
+ display: flex;
+}
+#btnclass{
+justify-content: center;
+display: flex;
+
+}
+
+.section{
+  background-color: rgba(224, 207, 207, 0.656); 
+padding: 2rem;
+border-radius: 10px;
+width: 500px;
+
+}
+
+.search-container h2 {
+  margin-bottom: 1rem;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  display: flex; 
   
-  .d-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+}
+
+.search-container p {
+  margin-bottom: 2rem;
   
-  .dropdown-toggle {
-    background-color: white;
-    color: black;
-    border: 1px solid #ccc;
-    border-radius: 0;
-    padding: 0.5rem 1rem;
-    width: 200px; 
-  }
+}
+
+
+
+
+.dropdown-menu {
+  width: 200px; 
+}
+
+.input-container {
+  margin-left: 1rem; 
   
-  .dropdown-menu {
-    width: 200px; 
-  }
-  
-  .input-container {
-    margin-left: 1rem; 
-  }
-  
-  input[type="text"] {
-    padding: 0.5rem;
-    border: 1px solid white;
-    border-radius: 0;
-    background-color: transparent;
-    color: white;
-    width: 200px; 
-    text-align: center;
-  }
-  
-  input[type="text"]::placeholder {
-    color: white;
-  }
-  
+}
+#location{
+
+height: 50px;
+
+}
+
+
+#search{
+margin-top: 40px;
+margin-left:200px;
+
+}
+
+
+/*input form*/
+
+
+/*input[type="text"] {
+  padding: 0.5rem;
+  border: 1px solid white;
+  border-radius: 0;
+  background-color:pink;
+  color: white;
+  width: 200px; 
+  text-align: center;
+ 
+}
+
+input[type="text"]::placeholder {
+  color: white;
+}
+
+*/
