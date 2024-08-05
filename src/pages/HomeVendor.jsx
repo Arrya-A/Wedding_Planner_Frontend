@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import React, { useState } from 'react'
 import { Collapse } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 
 function HomeVendor() {
@@ -34,7 +35,7 @@ function HomeVendor() {
               <div style={{ textAlign: 'center' }}>
                 <h2 className=' text-dark mb-3'>Welcome to your vendor portal!</h2>
                 <h6 className='  text-dark pt-2 px-3'>Manage your venue listings, monitor engagement,  and stay connected with couples planning their special day all in one place.</h6>
-                <button className='btn btn-outline-dark mt-4'>Get Started</button>
+                <button className='btn btn-outline-dark mt-4'><Link to={'/vendorDetails'}>View your profile</Link></button>
               </div>
             </div>
           </div>

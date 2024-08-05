@@ -8,8 +8,8 @@ import HomeVendor from './pages/HomeVendor'
 import VendorDetails from './pages/VendorDetails'
 
 
-import ViewCatering from './components/ViewCatering'
-import ViewVenue from './components/ViewVenue'
+// import ViewCatering from './components/ViewCatering'
+// import ViewVenue from './components/ViewVenue'
 
 function App() {
 
@@ -21,12 +21,12 @@ function App() {
         <Route path='/register' element={<Auth register />} />
         <Route path='/login' element={<Auth />} />
         <Route path='/vendorhome' element={<HomeVendor />} />
-
+        <Route path='/vendorDetails' element={<VendorDetails />} />
 
        
         
-        <Route path='/viewcatering' element={<ViewCatering />} />
-        <Route path='/viewvenue' element={<ViewVenue />} />
+        {/* <Route path='/viewcatering' element={<ViewCatering />} />
+        <Route path='/viewvenue' element={<ViewVenue />} /> */}
 
 
 

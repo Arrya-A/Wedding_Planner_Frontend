@@ -29,11 +29,11 @@ function Footer() {
             <div className='col-md-1'></div>
             <div className="col-md-2" >
             <div>
-              <h4 className='mb-4 text-white'>Guides</h4>
+              <h4 className='mb-4 text-white'>Support</h4>
               <div>
-              <p className='text-white'>React</p>
-              <p className='text-white'>React Bootstrap</p>
-              <p className='text-white'>Bootswatch</p>
+              <p className='text-white'>FAQ</p>
+              <p className='text-white'>Privacy Policy</p>
+              <p className='text-white'>Services</p>
             </div>
             </div>
             </div>
