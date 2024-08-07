@@ -1,18 +1,44 @@
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import React, { useState } from 'react'
 import { Collapse } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import { allVenueApi } from '../services/allApi';
+// import VendorDetails from './VendorDetails';
 
 
 function HomeVendor() {
   const [openSection, setOpenSection] = useState(null);
+  const [venueDetails, setVenueDetails]= useState({
+    venue:"",
+    emailid:"",
+    city:"",
+    contactno:"",
+    capacity:"",
+    price:""
+  })
+
+
   const handleToggle = (section) => {
 
     setOpenSection(openSection === section ? null : section);
   };
 
+  const handleUpload = async(e)=>{
+    e.preventDefault()
+    const result = await allVenueApi(venueDetails)
+    if(result.status>=200&&result.status<300){
+      alert("Successful")
+      console.log(result);
+      // handleClose()
+    }
+    else{
+      alert("Wrong")
+    }
+    
+    
+    
+  }
 
   return (
     <>
@@ -40,19 +66,6 @@ function HomeVendor() {
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
       </section>
 
 
@@ -118,6 +131,7 @@ function HomeVendor() {
                   type="text"
                   placeholder='Venue'
                   className='form-control rounded'
+                  onChange={(e)=>setVenueDetails({...venueDetails, venue:e.target.value})}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -125,6 +139,7 @@ function HomeVendor() {
                   type="email"
                   placeholder='Email id'
                   className='form-control rounded'
+                  onChange={(e)=>setVenueDetails({...venueDetails, emailid:e.target.value})}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -132,6 +147,7 @@ function HomeVendor() {
                   type="text"
                   placeholder='City'
                   className='form-control rounded'
+                  onChange={(e)=>setVenueDetails({...venueDetails, city:e.target.value})}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -139,6 +155,7 @@ function HomeVendor() {
                   type="number"
                   placeholder='Contact No'
                   className='form-control rounded'
+                  onChange={(e)=>setVenueDetails({...venueDetails, contactno:e.target.value})}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -146,6 +163,7 @@ function HomeVendor() {
                   type="number"
                   placeholder='Maximum Capacity'
                   className='form-control rounded'
+                  onChange={(e)=>setVenueDetails({...venueDetails, capacity:e.target.value})}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -153,12 +171,13 @@ function HomeVendor() {
                   type="number"
                   placeholder='Price'
                   className='form-control rounded'
+                  onChange={(e)=>setVenueDetails({...venueDetails, price:e.target.value})}
                 />
               </div>
 
 
               <div className="mb-3 w-100">
-                <button className='btn btn-dark w-100 rounded'>Update</button>
+                <button className='btn btn-dark w-100 rounded' onClick={handleUpload}>Upload</button>
               </div>
             </div>
           </section>
@@ -244,7 +263,7 @@ function HomeVendor() {
 
 
               <div className="mb-3 w-100">
-                <button className='btn btn-dark w-100 rounded'>Update</button>
+                <button className='btn btn-dark w-100 rounded'>Upload</button>
               </div>
             </div>
           </section>
@@ -257,6 +276,6 @@ function HomeVendor() {
 
     </>
   )
-}
 
+}
 export default HomeVendor
