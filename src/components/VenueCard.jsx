@@ -9,20 +9,23 @@ function VenueCard() {
   return (
     <>
 
-    <Card style={{ width: '100%'}}>
-         <Card.Img variant="top" src="https://assets.venuecrew.com/wp-content/uploads/2022/08/01233727/London-hotel-wedding-venue-The-Kimpton-Fitzroy-ballroom.jpg"height={'300px'} />
-         <Card.Body>
-           
-           <div className='d-flex justify-content-between'>
-           <Card.Title>venue here</Card.Title>
-           
-           <Button variant="danger"><FontAwesomeIcon icon={faTrashCan}/></Button>
-           </div>
-         </Card.Body>
-       </Card>
-     
-   
-       </>
+      <Card style={{ width: '100%' }}>
+        <Card.Img variant="top" src="https://assets.venuecrew.com/wp-content/uploads/2022/08/01233727/London-hotel-wedding-venue-The-Kimpton-Fitzroy-ballroom.jpg" height={'300px'} />
+        <Card.Body>
+
+          <div className='d-flex justify-content-between '>
+            <Card.Title>Venue</Card.Title>
+            <Card.Text>Email</Card.Text>
+            <Card.Text>Contact</Card.Text>
+            <Card.Text>City</Card.Text>
+            <Card.Text>MaxCapacity</Card.Text>
+            <Card.Text>Price</Card.Text>
+          </div>
+        </Card.Body>
+      </Card>
+
+
+    </>
   )
 }
 

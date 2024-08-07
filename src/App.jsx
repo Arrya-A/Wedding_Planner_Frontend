@@ -22,14 +22,6 @@ function App() {
         <Route path='/login' element={<Auth />} />
         <Route path='/vendorhome' element={<HomeVendor />} />
         <Route path='/vendorDetails' element={<VendorDetails />} />
-
-       
-        
-        {/* <Route path='/viewcatering' element={<ViewCatering />} />
-        <Route path='/viewvenue' element={<ViewVenue />} /> */}
-
-
-
       </Routes>
       <Footer />
     </>
