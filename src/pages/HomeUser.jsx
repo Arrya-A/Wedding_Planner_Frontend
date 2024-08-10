@@ -8,6 +8,12 @@ import ViewVenue from '../components/ViewVenue';
 
 function HomeUser() {
   const [open, setOpen] = useState(false);
+  const [searchCity, setSearchCity] = useState('');
+
+
+  const handleSearchInputChange = (e) => {
+    setSearchCity(e.target.value); // Update state on input change
+  };
 
   return (
     <>
@@ -40,26 +46,18 @@ function HomeUser() {
               <div className="col-12 " id="btnclass">
                 <div className="d-flex flex-column flex-md-row justify-content-center align-items-center section">
                   <div className="dropdown-container mb-3 mb-md-0">
-                    <Dropdown>
-                      <Dropdown.Toggle variant="light" className="  rounded-2 ">
-                        Category
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1"><Link to="/viewvenue">Venues</Link></Dropdown.Item>
-                        <Dropdown.Item href="#/action-2"><Link to="/viewcatering">Catering</Link></Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
+                    
                   </div>
                   <div className="input-container d-flex flex-column flex-md-row justify-content-center align-items-center">
                     <input
                       type="text"
-                      placeholder="Location"
+                      placeholder="Search your Location"
                       className="text-center bg-transparent p-2 border-white rounded-2 w-100"
                       id="location"
+                      value={searchCity}
+                      onChange={handleSearchInputChange} 
                     />
-                    <button className="btn btn-secondary ms-md-4 p-2 rounded-2 mt-3 mt-md-0" style={{ width: '200px' }} id="search">
-                      Search
-                    </button>
+                    
                   </div>
                 </div>
               </div>
@@ -67,8 +65,8 @@ function HomeUser() {
           </div>
         </div>
       </div>
-      <ViewVenue />
-      <ViewCatering />
+      <ViewVenue searchCity={searchCity} />
+      <ViewCatering searchCity={searchCity} />
 
 
       {/* Testimonials */}

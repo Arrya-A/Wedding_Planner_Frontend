@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CateringCard from './CateringCard'
 import { getAllCatererApi } from '../services/allApi'
 
-function ViewCatering() {
+function ViewCatering({ searchCity }) {
     const [allCaterer, setAllCaterer] = useState([])
 
     const getAllCaterer = async () => {
@@ -17,24 +17,34 @@ function ViewCatering() {
     useEffect(() => {
         getAllCaterer()
     }, [])
+
+
+
+    // Filter venues based on the searchCity prop
+    const filteredCaterer = allCaterer.filter(caterer =>
+        caterer.city.toLowerCase().includes(searchCity.toLowerCase())
+    );
     return (
         <>
 
             <div className='row w-100 p-5'>
                 <h4 className='my-3'>Catering</h4>
 
-                {allCaterer ?
-                    allCaterer?.map((item) => (
-                        <div className='col-md-3'>
+                {filteredCaterer.length > 0 ?
+                    filteredCaterer.map((item) => (
+                        <div className='col-md-3' key={item.id}>
                             <CateringCard caterer={item} />
-                        </div>))
+                        </div>
+                    ))
                     :
-                    <p className='text-danger fs-3 mt-5'>Nothing to display</p>
+                    <p className='text-danger fs-3 mt-5'>No venues found in {searchCity}</p>
                 }
 
-        </div >
-   </>
-  )
+
+                
+            </div >
+        </>
+    )
 }
 
 export default ViewCatering
