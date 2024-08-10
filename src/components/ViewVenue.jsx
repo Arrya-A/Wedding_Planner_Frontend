@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import VenueCard from './VenueCard'
 import { getAllVenueApi } from '../services/allApi';
 
-function ViewVenue() {
+function ViewVenue({searchCity}) {
 
     const [allVenue, setAllVenue] = useState([])
 
@@ -15,23 +15,30 @@ function ViewVenue() {
     console.log(allVenue);
 
 
+
+
     useEffect(() => {
         getAllVenue()
     }, [])
 
+    // Filter venues based on the searchCity prop
+    const filteredVenues = allVenue.filter(venue =>
+        venue.city.toLowerCase().includes(searchCity.toLowerCase())
+    );
 
     return (
         <>
             <div className='row w-100 p-5'>
                 <h4 className='my-3'>Venue</h4>
 
-                {allVenue ?
-                allVenue?.map((item)=>(
-                    <div className='col-md-3'>
-                        <VenueCard venue={item} />
-                    </div>))
+                {filteredVenues.length > 0 ?
+                    filteredVenues.map((item) => (
+                        <div className='col-md-3' key={item.id}>
+                            <VenueCard venue={item} />
+                        </div>
+                    ))
                     :
-                    <p className='text-danger fs-3 mt-5'>Nothing to display</p>
+                    <p className='text-danger fs-3 mt-5'>No venues found in {searchCity}</p>
                 }
 
 
