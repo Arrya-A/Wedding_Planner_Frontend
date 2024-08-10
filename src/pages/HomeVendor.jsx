@@ -1,48 +1,94 @@
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Collapse } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
-import { allVenueApi } from '../services/allApi';
-// import VendorDetails from './VendorDetails';
+import { allCatererApi, allVenueApi } from '../services/allApi';
 
 
 function HomeVendor() {
   const [openSection, setOpenSection] = useState(null);
-  const [venueDetails, setVenueDetails]= useState({
-    venue:"",
-    emailid:"",
-    city:"",
-    contactno:"",
-    capacity:"",
-    price:""
+  const [venueDetails, setVenueDetails] = useState({
+    projectImg: "",
+    venue: "",
+    emailid: "",
+    city: "",
+    contactno: "",
+    capacity: "",
+    price: ""
   })
 
+  const [catererDetails, setCatererDetails] = useState({
+    projectImg: "",
+    caterer: "",
+    emailid: "",
+    city: "",
+    contactno: "",
+    capacity: "",
+    priceVeg: "",
+    priceNonVeg:""
+
+  })
+  const [preview, setPreview] = useState("")
 
   const handleToggle = (section) => {
 
     setOpenSection(openSection === section ? null : section);
   };
 
-  const handleUpload = async(e)=>{
+  const handleUpload = async (e) => {
     e.preventDefault()
     const result = await allVenueApi(venueDetails)
-    if(result.status>=200&&result.status<300){
+    if (result.status >= 200 && result.status < 300) {
       alert("Successful")
       console.log(result);
       // handleClose()
     }
-    else{
+    else {
       alert("Wrong")
     }
-    
-    
-    
+
+
+
   }
+  const handleUploadC = async (e) => {
+    e.preventDefault()
+    const result = await allCatererApi(catererDetails)
+    if (result.status >= 200 && result.status < 300) {
+      alert("Successful")
+      console.log(result);
+      // handleClose()
+    }
+    else {
+      alert("Wrong")
+    }
+
+
+
+  }
+
+
+  const handleFile = (e) => {
+    // console.log(e.target.files[0]); 
+
+    setVenueDetails({ ...venueDetails, projectImg: e.target.files[0] })
+
+  }
+
+
+
+
+  useEffect(() => {
+    if (venueDetails.projectImg || catererDetails.projectImg) {
+      setPreview(URL.createObjectURL(venueDetails.projectImg))
+      setPreview(URL.createObjectURL(catererDetails.projectImg))
+    }
+
+  }, [venueDetails.projectImg,catererDetails.projectImg])
 
   return (
     <>
-    
+
       <section id='introduction'>
 
         <div className="row" style={{
@@ -61,7 +107,7 @@ function HomeVendor() {
               <div style={{ textAlign: 'center' }}>
                 <h2 className=' text-dark mb-3'>Welcome to your vendor portal!</h2>
                 <h6 className='  text-dark pt-2 px-3'>Manage your venue listings, monitor engagement,  and stay connected with couples planning their special day all in one place.</h6>
-                <button className='btn btn-outline-dark mt-4'><Link to={'/vendorDetails'}>View your profile</Link></button>
+                <button className='btn btn-outline-dark mt-4'><Link to={'/vendorDetails'} style={{ 'textDecoration': 'none' }}>View your profile</Link></button>
               </div>
             </div>
           </div>
@@ -106,9 +152,9 @@ function HomeVendor() {
             <div className='d-flex flex-column align-items-center' style={{ width: '60%' }}>
               <div className='d-flex justify-content-center align-items-center mb-4'>
                 <label htmlFor='profileImg'>
-                  <input type="file" id="profileImg" style={{ display: 'none' }} />
+                  <input type="file" id="profileImg" style={{ display: 'none' }} onChange={(e) => handleFile(e)} />
                   <img
-                    src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
+                    src={preview ? preview : "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"}
                     alt="Profile"
                     width='180px'
                     height='180px'
@@ -120,10 +166,10 @@ function HomeVendor() {
 
               <div className="mb-3 w-100">
                 <select className='form-control rounded' name="category" id="category">
-                <option value="" disabled selected >Choose Your Category</option>
+                  <option value="" disabled selected >Choose Your Category</option>
                   <option value="venue">Venue</option>
                   <option value="caterer">Caterer</option>
-              
+
                 </select>
               </div>
               <div className="mb-3 w-100">
@@ -131,7 +177,7 @@ function HomeVendor() {
                   type="text"
                   placeholder='Venue'
                   className='form-control rounded'
-                  onChange={(e)=>setVenueDetails({...venueDetails, venue:e.target.value})}
+                  onChange={(e) => setVenueDetails({ ...venueDetails, venue: e.target.value })}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -139,7 +185,7 @@ function HomeVendor() {
                   type="email"
                   placeholder='Email id'
                   className='form-control rounded'
-                  onChange={(e)=>setVenueDetails({...venueDetails, emailid:e.target.value})}
+                  onChange={(e) => setVenueDetails({ ...venueDetails, emailid: e.target.value })}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -147,7 +193,7 @@ function HomeVendor() {
                   type="text"
                   placeholder='City'
                   className='form-control rounded'
-                  onChange={(e)=>setVenueDetails({...venueDetails, city:e.target.value})}
+                  onChange={(e) => setVenueDetails({ ...venueDetails, city: e.target.value })}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -155,7 +201,7 @@ function HomeVendor() {
                   type="number"
                   placeholder='Contact No'
                   className='form-control rounded'
-                  onChange={(e)=>setVenueDetails({...venueDetails, contactno:e.target.value})}
+                  onChange={(e) => setVenueDetails({ ...venueDetails, contactno: e.target.value })}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -163,7 +209,7 @@ function HomeVendor() {
                   type="number"
                   placeholder='Maximum Capacity'
                   className='form-control rounded'
-                  onChange={(e)=>setVenueDetails({...venueDetails, capacity:e.target.value})}
+                  onChange={(e) => setVenueDetails({ ...venueDetails, capacity: e.target.value })}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -171,7 +217,7 @@ function HomeVendor() {
                   type="number"
                   placeholder='Price'
                   className='form-control rounded'
-                  onChange={(e)=>setVenueDetails({...venueDetails, price:e.target.value})}
+                  onChange={(e) => setVenueDetails({ ...venueDetails, price: e.target.value })}
                 />
               </div>
 
@@ -198,9 +244,9 @@ function HomeVendor() {
             <div className='d-flex flex-column align-items-center' style={{ width: '60%' }}>
               <div className='d-flex justify-content-center align-items-center mb-4'>
                 <label htmlFor='profileImg'>
-                  <input type="file" id="profileImg" style={{ display: 'none' }} />
+                <input type="file" id="profileImg" style={{ display: 'none' }} onChange={(e) => handleFile(e)} />
                   <img
-                    src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
+                    src={preview ? preview : "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"}
                     alt="Profile"
                     width='180px'
                     height='180px'
@@ -212,10 +258,10 @@ function HomeVendor() {
 
               <div className="mb-3 w-100">
                 <select className='form-control rounded' name="category" id="category">
-                <option value="" disabled selected >Choose Your Category</option>
+                  <option value="" disabled selected >Choose Your Category</option>
                   <option value="venue">Venue</option>
                   <option value="caterer">Caterer</option>
-              
+
                 </select>
               </div>
               <div className="mb-3 w-100">
@@ -223,6 +269,7 @@ function HomeVendor() {
                   type="text"
                   placeholder='Caterer'
                   className='form-control rounded'
+                  onChange={(e) => setCatererDetails({ ...catererDetails, caterer: e.target.value })}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -230,6 +277,7 @@ function HomeVendor() {
                   type="email"
                   placeholder='Email id'
                   className='form-control rounded'
+                  onChange={(e) => setCatererDetails({ ...catererDetails, emailid: e.target.value })}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -237,6 +285,7 @@ function HomeVendor() {
                   type="text"
                   placeholder='City'
                   className='form-control rounded'
+                  onChange={(e) => setCatererDetails({ ...catererDetails, city: e.target.value })}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -244,6 +293,7 @@ function HomeVendor() {
                   type="number"
                   placeholder='Contact No'
                   className='form-control rounded'
+                  onChange={(e) => setCatererDetails({ ...catererDetails, contactno: e.target.value })}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -251,6 +301,7 @@ function HomeVendor() {
                   type="number"
                   placeholder='Price per Head (Veg)'
                   className='form-control rounded'
+                  onChange={(e) => setCatererDetails({ ...catererDetails, priceVeg: e.target.value })}
                 />
               </div>
               <div className="mb-3 w-100">
@@ -258,12 +309,13 @@ function HomeVendor() {
                   type="number"
                   placeholder='Price per Head (Non-Veg)'
                   className='form-control rounded'
+                  onChange={(e) => setCatererDetails({ ...catererDetails, priceNonVeg: e.target.value })}
                 />
               </div>
 
 
               <div className="mb-3 w-100">
-                <button className='btn btn-dark w-100 rounded'>Upload</button>
+                <button className='btn btn-dark w-100 rounded' onClick={handleUploadC}>Upload</button>
               </div>
             </div>
           </section>

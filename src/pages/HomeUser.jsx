@@ -4,24 +4,13 @@ import '../css/homeuser.css'
 import { Link } from 'react-router-dom';
 import ViewCatering from '../components/ViewCatering';
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Collapse from 'react-bootstrap/Collapse';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { Row } from 'react-bootstrap';
 import ViewVenue from '../components/ViewVenue';
-
-
-
-
 
 function HomeUser() {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-
-
       <div className="row" style={{
         backgroundImage: `url('https://www.venuelook.com/images/new-home-images/optimized/city/home-background.jpg')`,
         height: '100vh',
@@ -30,10 +19,6 @@ function HomeUser() {
         backgroundSize: 'cover',
         alignItems: 'center'
       }}>
-
-
-
-
         <div className="container text-center">
 
           <div className="row">
@@ -55,12 +40,10 @@ function HomeUser() {
               <div className="col-12 " id="btnclass">
                 <div className="d-flex flex-column flex-md-row justify-content-center align-items-center section">
                   <div className="dropdown-container mb-3 mb-md-0">
-
                     <Dropdown>
                       <Dropdown.Toggle variant="light" className="  rounded-2 ">
                         Category
                       </Dropdown.Toggle>
-
                       <Dropdown.Menu>
                         <Dropdown.Item href="#/action-1"><Link to="/viewvenue">Venues</Link></Dropdown.Item>
                         <Dropdown.Item href="#/action-2"><Link to="/viewcatering">Catering</Link></Dropdown.Item>
@@ -77,124 +60,23 @@ function HomeUser() {
                     <button className="btn btn-secondary ms-md-4 p-2 rounded-2 mt-3 mt-md-0" style={{ width: '200px' }} id="search">
                       Search
                     </button>
-
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
-
-
-
-
       </div>
-
-
-
-
-
-
-
-
-      {/* collapse userform */}
-
-
-      {/*  <div class="row w-100">
-
-
-          
-<Button className='collapsebutton'style={{backgroundColor:"pink"}}
-        onClick={() => setOpen(!open)}
-        aria-controls="example-collapse-form"
-        aria-expanded={open}
-      >
-        your wedding plan starts here...<FontAwesomeIcon icon={faAngleDown} style={{color: "white",}} />
-        
-      </Button>
-     </div>
-     
-     
-      <Collapse in={open}>
-      
-        <div id="form">
-
-        <div class="container">
-  <form action="action_page.php">
-   
-  <div class="row">
-  <div class="col-25">
-
-        <label for="fname">First Name</label>
-      </div>
-      <div class="col-75">
-        <input className='text-black' type="text" id="fname" name="firstname" placeholder="Your name.."/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="lname">Last Name</label>
-      </div>
-      <div class="col-75">
-        <input className='text-black'type="text" id="lname" name="lastname" placeholder="Your last name.."/>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-25">
-        <label for="phone number">phone number</label>
-      </div>
-      <div class="col-75">
-        <input className='text-black'type="text" id="number" name="number" placeholder="Your phone number"/>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-25">
-        <label for="country">Country</label>
-      </div>
-      <div class="col-75">
-        <select id="country" name="country">
-          <option value="india">India</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
-        </select>
-      </div>
-    </div>
-    
-    <div class="row">
-    <Link to={'viewvenue'}><input type="submit" value="Submit"/></Link>
-    </div>
-  </form>
-</div>
-
-                
-      
-
-
-
-        </div>
-      </Collapse>
-
- */}
-
       <ViewVenue />
       <ViewCatering />
 
 
       {/* Testimonials */}
       <section class="news py-5">
-
         <div class="container py-xl-5 py-lg-3" id="testimonial">
           <h3 class="heading-agileinfo text-dark text-center">Testimonials</h3>
           <div class="row mt-md-5 pt-4">
-
-
-
             <div class="col-md-4 item" >
-
               <div class="feedback-info py-5 px-4  d-flex align-items-center justify-content-center flex-column">
                 <h4 class="mb-2">Tempor incididunt ut labore hytnm</h4>
                 <p className='text-black'>Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo.</p>
@@ -209,9 +91,6 @@ function HomeUser() {
                 </div>
               </div>
             </div>
-
-
-
             <div class="col-md-4 item-2 " >
               <div class="feedback-info py-5 px-4">
                 <h4 class="mb-2">Tempor incididunt ut labore hytnm
@@ -228,10 +107,6 @@ function HomeUser() {
                 </div>
               </div>
             </div>
-
-
-
-
             <div class="col-md-4 item " >
               <div class="feedback-info py-5 px-4">
                 <h4 class="mb-2 ">Tempor incididunt ut labore hytnm
@@ -248,16 +123,9 @@ function HomeUser() {
                 </div>
               </div>
             </div>
-
-
-
           </div>
         </div>
-
       </section>
-
-
-
     </>
   )
 }
