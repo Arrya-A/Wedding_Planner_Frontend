@@ -1,40 +1,43 @@
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import React from 'react'
-import { Col, Row } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Col, Row } from 'react-bootstrap';
 
-function VenueCard() {
+
+function VenueCard({ venue }) {
   return (
     <>
 
-      <Card style={{ width: '100%' }}>
-        <Card.Img variant="top" src="https://assets.venuecrew.com/wp-content/uploads/2022/08/01233727/London-hotel-wedding-venue-The-Kimpton-Fitzroy-ballroom.jpg" height={'300px'} />
+      <Card style={{ width: '100%' }} className='mt-4'>
+        <Card.Img variant="top" src={venue?.projectImg} height={'300px'} />
         <Card.Body>
+          <Card.Title className='text-canter'>{venue?.venue}</Card.Title>
 
-          <div >
-          
-           <Card.Title>Venue</Card.Title>
-           <Row className='align-items-center'>
-           <Col md={4} className='mb-3'>
-           <Card.Text>Email:</Card.Text>
-             </Col>
-             <Col md={4}  className='mb-3'>
-            <Card.Text>Contact:</Card.Text>
-            </Col> 
-            <Col md={4}  className='mb-3'>
-            <Card.Text>City:</Card.Text>
-            </Col> 
-            <Col md={4}  className='mb-3'>
-            <Card.Text>Capacity:</Card.Text>
-            </Col> 
-            <Col md={4}  className='mb-3'>
-            <Card.Text>Price:</Card.Text>
-            </Col> 
-         </Row>
-          </div>
+          <Row className='align-items-center'>
+            <Col md={6} className='mb-3'>
+              <Card.Text>{venue?.emailid}</Card.Text>
+            </Col>
+            <Col md={6} className='mb-3'>
+              <Card.Text>{venue?.city}</Card.Text>
+            </Col>
+          </Row>
+
+          <Row className='align-items-center'>
+          <Col md={6} className='mb-3'>
+              <Card.Text>{venue?.contactno}</Card.Text>
+            </Col>
+            <Col md={6} className='mb-3'>
+              <Card.Text>Capacity:{venue?.capacity}</Card.Text>
+            </Col>
+          </Row>
+
+          <Row className='align-items-center'>
+            
+            
+            <Col md={12} className='mb-3'>
+              <Card.Text>Price:{venue?.price}</Card.Text>
+            </Col>
+          </Row>
         </Card.Body>
       </Card>
 
