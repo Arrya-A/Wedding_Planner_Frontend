@@ -5,6 +5,9 @@ import { Collapse } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { allCatererApi, allVenueApi } from '../services/allApi';
 
+import Calendar from 'react-calendar'; // Import the calendar
+import 'react-calendar/dist/Calendar.css';
+
 
 function HomeVendor() {
   const [openSection, setOpenSection] = useState(null);
@@ -15,7 +18,9 @@ function HomeVendor() {
     city: "",
     contactno: "",
     capacity: "",
-    price: ""
+    price: "",
+    bookedDates: [] 
+
   })
 
   const [catererDetails, setCatererDetails] = useState({
@@ -75,7 +80,10 @@ function HomeVendor() {
 
   }
 
-
+  const onDateChange = (dates) => {
+    const selectedDates = Array.isArray(dates) ? dates : [dates];
+    setVenueDetails({ ...venueDetails, bookedDates: selectedDates });
+  };
 
 
   useEffect(() => {
@@ -221,9 +229,25 @@ function HomeVendor() {
                 />
               </div>
 
-
+              <div className='d-flex'>
               <div className="mb-3 w-100">
+                <label>Select Booked Dates</label>
+                <Calendar
+                  selectRange={true} // Allows selecting a range of dates
+                  onChange={onDateChange}
+                  value={venueDetails.bookedDates}
+                  tileDisabled={({ date, view }) =>
+                    view === 'month' && // Disable dates that are already booked
+                    venueDetails.bookedDates.some(
+                      bookedDate => bookedDate.toDateString() === date.toDateString()
+                    )
+                  }
+                />
+              </div>
+
+              <div className="mb-3 w-100 ms-auto">
                 <button className='btn btn-dark w-100 rounded' onClick={handleUpload}>Upload</button>
+              </div>
               </div>
             </div>
           </section>
@@ -313,10 +337,27 @@ function HomeVendor() {
                 />
               </div>
 
+           <div className='d-flex'>
+           <div className="mb-3 w-100">
+                <label>Select Booked Dates</label>
+                <Calendar
+                  selectRange={true} // Allows selecting a range of dates
+                  onChange={(dates) => setCatererDetails({ ...catererDetails, bookedDates: dates })}
+                  value={catererDetails.bookedDates}
+                  tileDisabled={({ date, view }) =>
+                    view === 'month' && // Disable dates that are already booked
+                    catererDetails.bookedDates?.some(
+                      bookedDate => bookedDate.toDateString() === date.toDateString()
+                    )
+                  }
+                />
+              </div>
 
-              <div className="mb-3 w-100">
+
+              <div className="mb-3 mt-5 w-100 ms-auto">
                 <button className='btn btn-dark w-100 rounded' onClick={handleUploadC}>Upload</button>
               </div>
+           </div>
             </div>
           </section>
         </div>

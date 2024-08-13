@@ -33,7 +33,10 @@ function ViewCatering({ searchCity }) {
                 {filteredCaterer.length > 0 ?
                     filteredCaterer.map((item) => (
                         <div className='col-md-3' key={item.id}>
-                            <CateringCard caterer={item} />
+                            <CateringCard caterer={{ 
+                                    ...item, 
+                                    bookedDates: item.bookedDates || []  
+                                }}  />
                         </div>
                     ))
                     :

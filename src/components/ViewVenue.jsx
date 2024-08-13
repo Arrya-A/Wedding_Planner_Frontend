@@ -34,7 +34,10 @@ function ViewVenue({searchCity}) {
                 {filteredVenues.length > 0 ?
                     filteredVenues.map((item) => (
                         <div className='col-md-3' key={item.id}>
-                            <VenueCard venue={item} />
+                            <VenueCard venue={{ 
+                                    ...item, 
+                                    bookedDates: item.bookedDates || []  
+                                }}  />
                         </div>
                     ))
                     :

@@ -113,6 +113,10 @@ input[type=text], select, textarea{
     background-color:#ccc ;
 }
 
+.booked {
+  background: #f00 !important;
+  color: white !important;
+}
 
 
 
