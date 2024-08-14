@@ -1,11 +1,12 @@
-import React from 'react'
-import { Col, Row } from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Button, Col, Collapse, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Calendar } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
 
 function CateringCard({ caterer }) {
+  const [open, setOpen] = useState(false);
   return (
     <>
 
@@ -37,19 +38,32 @@ function CateringCard({ caterer }) {
               <Card.Text>Price:{caterer?.priceVeg}-{caterer?.priceNonVeg} / person</Card.Text>
             </Col>
           </Row>
-          <Row>
-            <Col md={12} className='mb-3'>
-              <Card.Text>Booked Dates:</Card.Text>
-              <Calendar
-                tileClassName={({ date, view }) => {
-                  if (caterer.bookedDates?.find(d => new Date(d).toDateString() === date.toDateString())) {
-                    return 'booked';
-                  }
-                  return null;
-                }}
-              />
-            </Col>
-          </Row>
+          <Button
+            onClick={() => setOpen(!open)}
+            aria-controls="collapse-calendar"
+            aria-expanded={open}
+            className="mb-2"
+          >
+       {open ? 'Hide Available Dates' : 'Check Available Dates'}
+          </Button>
+
+          <Collapse in={open}>
+            <div id="collapse-calendar">
+              <Row>
+                <Col md={12} className='mb-3'>
+                  <Card.Text>Booked Dates:</Card.Text>
+                  <Calendar
+                    tileClassName={({ date, view }) => {
+                      if (caterer.bookedDates?.find(d => new Date(d).toDateString() === date.toDateString())) {
+                        return 'booked';
+                      }
+                      return null;
+                    }}
+                  />
+                </Col>
+              </Row>
+            </div>
+          </Collapse>
         </Card.Body>
       </Card>
 

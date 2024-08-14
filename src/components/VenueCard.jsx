@@ -1,11 +1,14 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card';
-import { Col, Row } from 'react-bootstrap';
+import { Button, Col, Collapse, Row } from 'react-bootstrap';
 import { Calendar } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
+
+
 function VenueCard({ venue }) {
+  const [open, setOpen] = useState(false);
   return (
     <>
 
@@ -42,15 +45,27 @@ function VenueCard({ venue }) {
 
           <Row>
             <Col md={12} className='mb-3'>
-              <Card.Text>Booked Dates:</Card.Text>
-              <Calendar
-                tileClassName={({ date, view }) => {
-                  if (venue.bookedDates?.find(d => new Date(d).toDateString() === date.toDateString())) {
-                    return 'booked';
-                  }
-                  return null;
-                }}
-              />
+            <Button
+            onClick={() => setOpen(!open)}
+            aria-controls="collapse-calendar"
+            aria-expanded={open}
+            className="mb-2"
+          >
+            {open ? 'Hide Available Dates' : 'Check Available Dates'}
+          </Button>
+              <Collapse in={open}>
+                <div id="calendar-collapse">
+                  <Card.Text className='mt-3'>Booked Dates:</Card.Text>
+                  <Calendar
+                    tileClassName={({ date, view }) => {
+                      if (venue.bookedDates?.find(d => new Date(d).toDateString() === date.toDateString())) {
+                        return 'booked';
+                      }
+                      return null;
+                    }}
+                  />
+                </div>
+              </Collapse>
             </Col>
           </Row>
         </Card.Body>
