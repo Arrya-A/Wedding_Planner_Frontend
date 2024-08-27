@@ -12,29 +12,31 @@ import 'react-calendar/dist/Calendar.css';
 function HomeVendor() {
   const [openSection, setOpenSection] = useState(null);
   const [venueDetails, setVenueDetails] = useState({
-    projectImg: "",
+
     venue: "",
+    imageUrl:"",
     emailid: "",
     city: "",
     contactno: "",
     capacity: "",
     price: "",
-    bookedDates: [] 
+    bookedDates: []
 
   })
 
   const [catererDetails, setCatererDetails] = useState({
-    projectImg: "",
+
     caterer: "",
+    imageUrl:"",
     emailid: "",
     city: "",
     contactno: "",
     capacity: "",
     priceVeg: "",
-    priceNonVeg:""
+    priceNonVeg: ""
 
   })
-  const [preview, setPreview] = useState("")
+
 
   const handleToggle = (section) => {
 
@@ -73,26 +75,11 @@ function HomeVendor() {
   }
 
 
-  const handleFile = (e) => {
-    // console.log(e.target.files[0]); 
-
-    setVenueDetails({ ...venueDetails, projectImg: e.target.files[0] })
-
-  }
-
   const onDateChange = (dates) => {
     const selectedDates = Array.isArray(dates) ? dates : [dates];
     setVenueDetails({ ...venueDetails, bookedDates: selectedDates });
   };
 
-
-  useEffect(() => {
-    if (venueDetails.projectImg || catererDetails.projectImg) {
-      setPreview(URL.createObjectURL(venueDetails.projectImg))
-      setPreview(URL.createObjectURL(catererDetails.projectImg))
-    }
-
-  }, [venueDetails.projectImg,catererDetails.projectImg])
 
   return (
     <>
@@ -127,13 +114,13 @@ function HomeVendor() {
         <div className="row p-5">
           <h3 className='mb-5'>Choose your category</h3>
           <div className="col-md-1"></div>
-          <div className="col-md-5 mt-2">
+          <div className="col-md-5 mt-2 mb-5">
             <div className=' d-flex' style={{ backgroundColor: 'rgb(244,213,194)', height: '150px' }}>
               <button onClick={() => handleToggle('section1')} className='btn btn-outline-primary'>Venue {openSection === 'section1' ? <FontAwesomeIcon icon={faAngleUp} /> : <FontAwesomeIcon icon={faAngleDown} />}</button>
               <img className='ms-auto' style={{ overflow: 'hidden', borderTopLeftRadius: '10px', borderBottomLeftRadius: '80px' }} src="https://png.pngtree.com/thumb_back/fh260/background/20230902/pngtree-the-center-of-the-wedding-venue-is-decorated-with-flower-arrangements-image_13158307.jpg" alt="no image" height={'150px'} width={'200px'} />
             </div>
           </div>
-          <div className="col-md-5 mt-2">
+          <div className="col-md-5 mt-2 mb-5">
             <div className='d-flex' style={{ backgroundColor: 'rgb(216,223,252)', height: '150px' }}>
               <button onClick={() => handleToggle('section2')} className='btn btn-outline-primary'>Caterer {openSection === 'section2' ? <FontAwesomeIcon icon={faAngleUp} /> : <FontAwesomeIcon icon={faAngleDown} />}</button>
               <img className='ms-auto' style={{ overflow: 'hidden', borderTopLeftRadius: '80px', borderBottomLeftRadius: '10px' }} src="https://cdn0.weddingwire.com/vendor/342031/3_2/640/jpg/dsc09483_51_2130243-167639591990234.jpeg" alt="no image" height={'150px'} width={'200px'} />
@@ -149,29 +136,12 @@ function HomeVendor() {
 
       {/* form- venue */}
 
-
-
-
       <Collapse in={openSection === 'section1'}>
         <div>
           <section id='vendor_form' className='d-flex justify-content-center align-items-center' style={{
             height: '100vh', backgroundColor: 'rgb(244,213,194)'
           }}>
             <div className='d-flex flex-column align-items-center' style={{ width: '60%' }}>
-              <div className='d-flex justify-content-center align-items-center mb-4'>
-                <label htmlFor='profileImg'>
-                  <input type="file" id="profileImg" style={{ display: 'none' }} onChange={(e) => handleFile(e)} />
-                  <img
-                    src={preview ? preview : "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"}
-                    alt="Profile"
-                    width='180px'
-                    height='180px'
-                    className='rounded-circle'
-                  />
-                </label>
-              </div>
-
-
               <div className="mb-3 w-100">
                 <select className='form-control rounded' name="category" id="category">
                   <option value="" disabled selected >Choose Your Category</option>
@@ -187,6 +157,10 @@ function HomeVendor() {
                   className='form-control rounded'
                   onChange={(e) => setVenueDetails({ ...venueDetails, venue: e.target.value })}
                 />
+              </div>
+              <div className="mb-3 w-100">
+              <input type="text" className='form-control' placeholder='Image Url' onChange={(e)=>setVenueDetails({...venueDetails,
+                imageUrl:e.target.value})} />
               </div>
               <div className="mb-3 w-100">
                 <input
@@ -230,24 +204,24 @@ function HomeVendor() {
               </div>
 
               <div className='d-flex'>
-              <div className="mb-3 w-100">
-                <label>Select Booked Dates</label>
-                <Calendar
-                  selectRange={true} // Allows selecting a range of dates
-                  onChange={onDateChange}
-                  value={venueDetails.bookedDates}
-                  tileDisabled={({ date, view }) =>
-                    view === 'month' && // Disable dates that are already booked
-                    venueDetails.bookedDates.some(
-                      bookedDate => bookedDate.toDateString() === date.toDateString()
-                    )
-                  }
-                />
-              </div>
+                <div className="mb-3 w-100">
+                  <label>Select Booked Dates</label>
+                  <Calendar
+                    selectRange={true} // Allows selecting a range of dates
+                    onChange={onDateChange}
+                    value={venueDetails.bookedDates}
+                    tileDisabled={({ date, view }) =>
+                      view === 'month' && // Disable dates that are already booked
+                      venueDetails.bookedDates.some(
+                        bookedDate => bookedDate.toDateString() === date.toDateString()
+                      )
+                    }
+                  />
+                </div>
 
-              <div className="mb-3 w-100 ms-auto">
-                <button className='btn btn-dark w-100 rounded' onClick={handleUpload}>Upload</button>
-              </div>
+                <div className="mb-3 w-100 ms-auto">
+                  <button className='btn btn-dark w-100 rounded' onClick={handleUpload}>Upload</button>
+                </div>
               </div>
             </div>
           </section>
@@ -265,22 +239,9 @@ function HomeVendor() {
           <section id='vendor_form' className='d-flex justify-content-center align-items-center' style={{
             height: '100vh', backgroundColor: 'rgb(216,223,252)'
           }}>
-            <div className='d-flex flex-column align-items-center' style={{ width: '60%' }}>
-              <div className='d-flex justify-content-center align-items-center mb-4'>
-                <label htmlFor='profileImg'>
-                <input type="file" id="profileImg" style={{ display: 'none' }} onChange={(e) => handleFile(e)} />
-                  <img
-                    src={preview ? preview : "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"}
-                    alt="Profile"
-                    width='180px'
-                    height='180px'
-                    className='rounded-circle'
-                  />
-                </label>
-              </div>
+            <div >
 
-
-              <div className="mb-3 w-100">
+              <div className="mb-3 w-100" style={{marginTop:'100px'}}>
                 <select className='form-control rounded' name="category" id="category">
                   <option value="" disabled selected >Choose Your Category</option>
                   <option value="venue">Venue</option>
@@ -295,6 +256,10 @@ function HomeVendor() {
                   className='form-control rounded'
                   onChange={(e) => setCatererDetails({ ...catererDetails, caterer: e.target.value })}
                 />
+              </div>
+              <div className="mb-3 w-100">
+              <input type="text" className='form-control' placeholder='Image Url' onChange={(e)=>setCatererDetails({...catererDetails,
+                imageUrl:e.target.value})} />
               </div>
               <div className="mb-3 w-100">
                 <input
@@ -337,27 +302,25 @@ function HomeVendor() {
                 />
               </div>
 
-           <div className='d-flex'>
-           <div className="mb-3 w-100">
-                <label>Select Booked Dates</label>
-                <Calendar
-                  selectRange={true} // Allows selecting a range of dates
-                  onChange={(dates) => setCatererDetails({ ...catererDetails, bookedDates: dates })}
-                  value={catererDetails.bookedDates}
-                  tileDisabled={({ date, view }) =>
-                    view === 'month' && // Disable dates that are already booked
-                    catererDetails.bookedDates?.some(
-                      bookedDate => bookedDate.toDateString() === date.toDateString()
-                    )
-                  }
-                />
+              <div className='d-flex'>
+                <div className="mb-5 w-100 mt-1">
+                  <label>Select Booked Dates</label>
+                  <Calendar
+                    selectRange={true} // Allows selecting a range of dates
+                    onChange={(dates) => setCatererDetails({ ...catererDetails, bookedDates: dates })}
+                    value={catererDetails.bookedDates}
+                    tileDisabled={({ date, view }) =>
+                      view === 'month' && // Disable dates that are already booked
+                      catererDetails.bookedDates?.some(
+                        bookedDate => bookedDate.toDateString() === date.toDateString()
+                      )
+                    }
+                  />
+                </div>
+                <div className="mb-3 mt-5 w-100 ms-auto">
+                  <button className='btn btn-dark w-100 rounded' onClick={handleUploadC}>Upload</button>
+                </div>
               </div>
-
-
-              <div className="mb-3 mt-5 w-100 ms-auto">
-                <button className='btn btn-dark w-100 rounded' onClick={handleUploadC}>Upload</button>
-              </div>
-           </div>
             </div>
           </section>
         </div>

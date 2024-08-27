@@ -11,7 +11,7 @@ function CateringCard({ caterer }) {
     <>
 
       <Card style={{ width: '100%' }}>
-        <Card.Img variant="top" src="https://th.bing.com/th/id/OIP._lBIq_V2kkkccsuHY3D32gHaFj?rs=1&pid=ImgDetMain" height={'300px'} />
+        <Card.Img variant="top" src={caterer?.imageUrl} height={'300px'} />
         <Card.Body>
           <Card.Title className='text-canter'>{caterer?.caterer}</Card.Title>
 

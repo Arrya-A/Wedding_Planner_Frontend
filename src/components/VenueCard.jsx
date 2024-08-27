@@ -13,7 +13,7 @@ function VenueCard({ venue }) {
     <>
 
       <Card style={{ width: '100%' }} className='mt-4'>
-        <Card.Img variant="top" src={venue?.projectImg} height={'300px'} />
+        <Card.Img variant="top" src={venue?.imageUrl} height={'300px'} />
         <Card.Body>
           <Card.Title className='text-canter'>{venue?.venue}</Card.Title>
 
