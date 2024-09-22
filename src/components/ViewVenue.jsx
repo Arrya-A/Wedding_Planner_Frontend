@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import VenueCard from './VenueCard'
 import { getAllVenueApi } from '../services/allApi';
 
-function ViewVenue({searchCity}) {
+function ViewVenue({ searchCity }) {
 
     const [allVenue, setAllVenue] = useState([])
 
@@ -13,7 +13,6 @@ function ViewVenue({searchCity}) {
 
     }
     console.log(allVenue);
-
 
 
 
@@ -34,18 +33,15 @@ function ViewVenue({searchCity}) {
                 {filteredVenues.length > 0 ?
                     filteredVenues.map((item) => (
                         <div className='col-md-3' key={item.id}>
-                            <VenueCard venue={{ 
-                                    ...item, 
-                                    bookedDates: item.bookedDates || []  
-                                }}  />
+                            <VenueCard venue={{
+                                ...item,
+                                bookedDates: item.bookedDates || []
+                            }} />
                         </div>
                     ))
                     :
                     <p className='text-danger fs-3 mt-5'>No venues found in {searchCity}</p>
                 }
-
-
-
             </div>
         </>
     )

@@ -42,10 +42,6 @@ function VendorDetails() {
                                     <button className='btn btn-outline-dark rounded-3'>Update</button>
                                     </div>
                             </div>
-
-
-
-
                         </div>
                         <div className="col-md-1"></div>
 
@@ -58,18 +54,3 @@ function VendorDetails() {
 }
 
 export default VendorDetails
-// name
-// photo
-// mail
-// city
-// contact no
-// max capacity
-// price
-
-// name
-// photo
-// mail
-// city
-// contact
-// price veg
-// price nv

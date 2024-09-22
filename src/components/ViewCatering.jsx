@@ -26,25 +26,21 @@ function ViewCatering({ searchCity }) {
     );
     return (
         <>
-
             <div className='row w-100 p-5'>
                 <h4 className='my-3'>Catering</h4>
 
                 {filteredCaterer.length > 0 ?
                     filteredCaterer.map((item) => (
                         <div className='col-md-3' key={item.id}>
-                            <CateringCard caterer={{ 
-                                    ...item, 
-                                    bookedDates: item.bookedDates || []  
-                                }}  />
+                            <CateringCard caterer={{
+                                ...item,
+                                bookedDates: item.bookedDates || []
+                            }} />
                         </div>
                     ))
                     :
                     <p className='text-danger fs-3 mt-5'>No venues found in {searchCity}</p>
                 }
-
-
-                
             </div >
         </>
     )

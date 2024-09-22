@@ -5,13 +5,10 @@ import { Button, Col, Collapse, Row } from 'react-bootstrap';
 import { Calendar } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-
-
 function VenueCard({ venue }) {
   const [open, setOpen] = useState(false);
   return (
     <>
-
       <Card style={{ width: '100%' }} className='mt-4'>
         <Card.Img variant="top" src={venue?.imageUrl} height={'300px'} />
         <Card.Body>
@@ -27,7 +24,7 @@ function VenueCard({ venue }) {
           </Row>
 
           <Row className='align-items-center'>
-          <Col md={6} className='mb-3'>
+            <Col md={6} className='mb-3'>
               <Card.Text>{venue?.contactno}</Card.Text>
             </Col>
             <Col md={6} className='mb-3'>
@@ -36,8 +33,6 @@ function VenueCard({ venue }) {
           </Row>
 
           <Row className='align-items-center'>
-            
-            
             <Col md={12} className='mb-3'>
               <Card.Text>Price:{venue?.price}</Card.Text>
             </Col>
@@ -45,14 +40,14 @@ function VenueCard({ venue }) {
 
           <Row>
             <Col md={12} className='mb-3'>
-            <Button
-            onClick={() => setOpen(!open)}
-            aria-controls="collapse-calendar"
-            aria-expanded={open}
-            className="mb-2"
-          >
-            {open ? 'Hide Available Dates' : 'Check Available Dates'}
-          </Button>
+              <Button
+                onClick={() => setOpen(!open)}
+                aria-controls="collapse-calendar"
+                aria-expanded={open}
+                className="mb-2"
+              >
+                {open ? 'Hide Available Dates' : 'Check Available Dates'}
+              </Button>
               <Collapse in={open}>
                 <div id="calendar-collapse">
                   <Card.Text className='mt-3'>Booked Dates:</Card.Text>
@@ -70,8 +65,6 @@ function VenueCard({ venue }) {
           </Row>
         </Card.Body>
       </Card>
-
-
     </>
   )
 }

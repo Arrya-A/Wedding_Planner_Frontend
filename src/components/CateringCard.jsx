@@ -9,7 +9,6 @@ function CateringCard({ caterer }) {
   const [open, setOpen] = useState(false);
   return (
     <>
-
       <Card style={{ width: '100%' }}>
         <Card.Img variant="top" src={caterer?.imageUrl} height={'300px'} />
         <Card.Body>
@@ -28,23 +27,21 @@ function CateringCard({ caterer }) {
             <Col md={12} className='mb-3'>
               <Card.Text>{caterer?.contactno}</Card.Text>
             </Col>
-
           </Row>
 
           <Row className='align-items-center'>
-
-
             <Col md={12} className='mb-3'>
               <Card.Text>Price:{caterer?.priceVeg}-{caterer?.priceNonVeg} / person</Card.Text>
             </Col>
           </Row>
+
           <Button
             onClick={() => setOpen(!open)}
             aria-controls="collapse-calendar"
             aria-expanded={open}
             className="mb-2"
           >
-       {open ? 'Hide Available Dates' : 'Check Available Dates'}
+            {open ? 'Hide Available Dates' : 'Check Available Dates'}
           </Button>
 
           <Collapse in={open}>

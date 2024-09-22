@@ -14,10 +14,10 @@ function HeaderUser() {
           <h3 id='brandname'>Wedding Bells</h3>
         </div>
         <Nav.Item className='ms-auto'>
-          <Nav.Link className='mt-2'><Link to={'/'}>Home</Link></Nav.Link>
+          <Nav.Link className='mt-2'><Link to={'/'} style={{ textDecoration: 'none', color: 'inherit' }}>Home</Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link className='mt-2'  eventKey="link-1"><Link to={''}>Testimonial</Link></Nav.Link>
+          <Nav.Link className='mt-2'  eventKey="link-1"><Link to={''} style={{ textDecoration: 'none', color: 'inherit' }}>Testimonial</Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link className='mt-2' eventKey="link-2">Contact Us</Nav.Link>

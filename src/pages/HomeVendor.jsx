@@ -4,8 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Collapse } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { allCatererApi, allVenueApi } from '../services/allApi';
-
-import Calendar from 'react-calendar'; // Import the calendar
+import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
 
@@ -14,7 +13,7 @@ function HomeVendor() {
   const [venueDetails, setVenueDetails] = useState({
 
     venue: "",
-    imageUrl:"",
+    imageUrl: "",
     emailid: "",
     city: "",
     contactno: "",
@@ -27,7 +26,7 @@ function HomeVendor() {
   const [catererDetails, setCatererDetails] = useState({
 
     caterer: "",
-    imageUrl:"",
+    imageUrl: "",
     emailid: "",
     city: "",
     contactno: "",
@@ -39,7 +38,6 @@ function HomeVendor() {
 
 
   const handleToggle = (section) => {
-
     setOpenSection(openSection === section ? null : section);
   };
 
@@ -54,10 +52,8 @@ function HomeVendor() {
     else {
       alert("Wrong")
     }
-
-
-
   }
+
   const handleUploadC = async (e) => {
     e.preventDefault()
     const result = await allCatererApi(catererDetails)
@@ -69,9 +65,6 @@ function HomeVendor() {
     else {
       alert("Wrong")
     }
-
-
-
   }
 
 
@@ -83,9 +76,7 @@ function HomeVendor() {
 
   return (
     <>
-
       <section id='introduction'>
-
         <div className="row" style={{
           backgroundImage: `url('https://blog.wedsites.com/wp-content/uploads/wedsites-blog-child-free-wedding-wording-etiquette.jpg')`,
           height: '100vh',
@@ -109,7 +100,6 @@ function HomeVendor() {
         </div>
       </section>
 
-
       <section id='category'>
         <div className="row p-5">
           <h3 className='mb-5'>Choose your category</h3>
@@ -129,9 +119,6 @@ function HomeVendor() {
           <div className="col-md-1"></div>
         </div>
       </section>
-
-
-
 
 
       {/* form- venue */}
@@ -159,8 +146,10 @@ function HomeVendor() {
                 />
               </div>
               <div className="mb-3 w-100">
-              <input type="text" className='form-control' placeholder='Image Url' onChange={(e)=>setVenueDetails({...venueDetails,
-                imageUrl:e.target.value})} />
+                <input type="text" className='form-control' placeholder='Image Url' onChange={(e) => setVenueDetails({
+                  ...venueDetails,
+                  imageUrl: e.target.value
+                })} />
               </div>
               <div className="mb-3 w-100">
                 <input
@@ -229,9 +218,6 @@ function HomeVendor() {
       </Collapse>
 
 
-
-
-
       {/*form - catering  */}
 
       <Collapse in={openSection === 'section2'}>
@@ -241,7 +227,7 @@ function HomeVendor() {
           }}>
             <div >
 
-              <div className="mb-3 w-100" style={{marginTop:'100px'}}>
+              <div className="mb-3 w-100" style={{ marginTop: '100px' }}>
                 <select className='form-control rounded' name="category" id="category">
                   <option value="" disabled selected >Choose Your Category</option>
                   <option value="venue">Venue</option>
@@ -258,8 +244,10 @@ function HomeVendor() {
                 />
               </div>
               <div className="mb-3 w-100">
-              <input type="text" className='form-control' placeholder='Image Url' onChange={(e)=>setCatererDetails({...catererDetails,
-                imageUrl:e.target.value})} />
+                <input type="text" className='form-control' placeholder='Image Url' onChange={(e) => setCatererDetails({
+                  ...catererDetails,
+                  imageUrl: e.target.value
+                })} />
               </div>
               <div className="mb-3 w-100">
                 <input
@@ -325,11 +313,6 @@ function HomeVendor() {
           </section>
         </div>
       </Collapse>
-
-
-
-
-
     </>
   )
 

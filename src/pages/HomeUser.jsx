@@ -57,7 +57,6 @@ function HomeUser() {
                       value={searchCity}
                       onChange={handleSearchInputChange} 
                     />
-                    
                   </div>
                 </div>
               </div>
